@@ -40,6 +40,7 @@ namespace wush
 		template<class Array, class ArrayElement>
 		void MaxHeapify(Array& A, Count i, const Count A_size)
 		{
+//			std::cout << "MaxHeapify i:" << i << ",A_size:" << A_size << std::endl;
 			bool is_continue = true;
 			while (is_continue) {
 				is_continue = true;
@@ -61,6 +62,7 @@ namespace wush
 					A[i] = A[largest];
 					A[largest] = temp;
 					i = largest;
+//					std::cout << largest << std::endl;
 				}
 				else {
 					is_continue = false;
@@ -72,7 +74,6 @@ namespace wush
 		void BuildMaxHeap(Array& A, const Count A_size) {
 			for (Count i = A_size/2;i >= 1;i--)
 			{
-				std::cout << "BuildMaxHeap i:" << i << ",";
 				MaxHeapify<Array, ArrayElement>(A, i-1, A_size);
 			}
 		}
@@ -86,7 +87,7 @@ namespace wush
 				A[0] = A[i];
 				A[i] = temp;
 				A_size--;
-				MaxHeapify<Array, ArrayElement>(A, 1, A_size);
+				MaxHeapify<Array, ArrayElement>(A, 0, A_size);
 			}
 		}
 	}

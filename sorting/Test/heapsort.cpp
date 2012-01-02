@@ -19,7 +19,7 @@ int main()
 	std::cout << "BuildMaxHeap:";
 	for (int i = 0;i < 10;i++)
 	{
-		std::cout << A[i] << ",";
+		std::cout << testing_input[i] << ",";
 	}
 	std::cout << std::endl;
 
@@ -31,7 +31,7 @@ int main()
 	std::cout << "HeapSort:";
 	for (int i = 0;i < 10;i++)
 	{
-		std::cout << A[i] << ",";
+		std::cout << testing_input[i] << ",";
 	}
 	std::cout << std::endl;
 
