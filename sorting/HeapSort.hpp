@@ -13,7 +13,10 @@ namespace wush
 
 	namespace sorting
 	{
+#ifndef COUNT
 		typedef unsigned int Count;
+#define COUNT
+#endif //COUNT
 
 		/**
 		 * See page 112 of Corment
@@ -34,14 +37,14 @@ namespace wush
 		// parent(i) = (i+1)/2 - 1
 		// left(i) = 2*(i+1) - 1
 		// right(i) = 2*(i+1)
-		template<class Array>
+		template<class Array, class ArrayElement>
 		void MaxHeapify(Array& A, Count i, const Count A_size)
 		{
 			bool is_continue = true;
 			while (is_continue) {
 				is_continue = true;
 				Count
-					l = 2(i+1) - 1,
+					l = 2*(i+1) - 1,
 					r = 2*(i+1),
 					largest;
 				if (l < A_size && A[l] > A[i]) {
@@ -54,7 +57,7 @@ namespace wush
 					largest = r;
 				}
 				if (largest != i) {
-					Count temp(A[i]);
+					ArrayElement temp(A[i]);
 					A[i] = A[largest];
 					A[largest] = temp;
 					i = largest;
@@ -65,28 +68,25 @@ namespace wush
 			}
 		}
 
-		template<class Array>
+		template<class Array, class ArrayElement>
 		void BuildMaxHeap(Array& A, const Count A_size) {
-			bool is_continue = true;
-			while (is_continue) {
-				Count i = A_size/2;
-				while (i >= 1) {
-					i--;
-					MaxHeapify<Array>(A, i, A_size);
-				}
+			for (Count i = A_size/2;i >= 1;i--)
+			{
+				std::cout << "BuildMaxHeap i:" << i << ",";
+				MaxHeapify<Array, ArrayElement>(A, i-1, A_size);
 			}
 		}
 
-		template<class Array>
+		template<class Array, class ArrayElement>
 		void HeapSort(Array& A, Count A_size)
 		{
-			BuildMaxHeap<Array>(A, A_size);
+			BuildMaxHeap<Array, ArrayElement>(A, A_size);
 			for (Count i= A_size - 1;i >= 1;i--) {
 				Count temp(A[0]);
 				A[0] = A[i];
 				A[i] = temp;
 				A_size--;
-				MaxHeapify(A, 1);
+				MaxHeapify<Array, ArrayElement>(A, 1, A_size);
 			}
 		}
 	}
