@@ -19,7 +19,7 @@ namespace wush
 #endif //COUNT
 
 		/**
-		 * See page 112 of Corment
+		 * See page 112 of Cormen
 		 */
 		inline const Count Parent(const Count i) { return (i+1)/2 - 1; }
 		inline const Count Left(const Count i) { return 2*(i+1) - 1; }
@@ -34,12 +34,12 @@ namespace wush
 		 *
 		 * @params A 	container with operator [] and <
 		 */
-		// parent(i) = (i+1)/2 - 1
-		// left(i) = 2*(i+1) - 1
-		// right(i) = 2*(i+1)
 		template<class Array, class ArrayElement>
 		void MaxHeapify(Array& A, Count i, const Count A_size)
 		{
+			// parent(i) = (i+1)/2 - 1
+			// left(i) = 2*(i+1) - 1
+			// right(i) = 2*(i+1)
 //			std::cout << "MaxHeapify i:" << i << ",A_size:" << A_size << std::endl;
 			bool is_continue = true;
 			while (is_continue) {

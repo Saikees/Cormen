@@ -1,14 +1,14 @@
-all : Test/quicksort.exe Test/heapsort.exe
+all : build/quicksort.exe build/heapsort.exe
 
-Test/quicksort.exe : Test/quicksort.cpp QuickSort.hpp
-	g++ Test/quicksort.cpp -o Test/quicksort.exe
+build/quicksort.exe : build/quicksort.cpp QuickSort.hpp
+	g++ build/quicksort.cpp -o build/quicksort.exe
 	
-Test/heapsort.exe : Test/heapsort.cpp HeapSort.hpp
-	g++ Test/heapsort.cpp -o Test/heapsort.exe
+build/heapsort.exe : build/heapsort.cpp HeapSort.hpp
+	g++ build/heapsort.cpp -o build/heapsort.exe
 	
 clean :
-	rm Test/*.exe
+	rm build/*.exe
 	
 test :
-	Test/quicksort.exe
-	Test/heapsort.exe
+	build/quicksort.exe
+	build/heapsort.exe
