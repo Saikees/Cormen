@@ -8,14 +8,10 @@
 #ifndef QUICKSORT_HPP_
 #define QUICKSORT_HPP_
 
-#include <deque>
-
+#include<deque>
+#include"Setting.hpp"
 namespace wush {
 	namespace sorting {
-#ifndef COUNT
-		typedef unsigned int Count;
-#define COUNT
-#endif //COUNT
 
 		template<class Array, class ArrayElement>
 		const Count Partition(Array& A, const Count start, const Count end)

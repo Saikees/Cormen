@@ -12,6 +12,7 @@
 #include<stdexcept>
 #include<utility>
 #include<vector>
+#include"Setting.hpp"
 #include"HeapSort.hpp"
 
 namespace wush {

@@ -7,16 +7,13 @@
 
 #ifndef HEAPSORT_HPP_
 #define HEAPSORT_HPP_
+#include"Setting.hpp"
 
 namespace wush
 {
 
 	namespace sorting
 	{
-#ifndef COUNT
-		typedef unsigned int Count;
-#define COUNT
-#endif //COUNT
 
 		/**
 		 * See page 112 of Cormen
