@@ -13,6 +13,9 @@ namespace wush
 	namespace data_structure
 	{
 		typedef unsigned int Count;
+		const bool
+			RED(true),
+			BLACK(false);
 	}
 }
 

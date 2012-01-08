@@ -8,6 +8,7 @@
 #ifndef BINARYSEARCHTREE_HPP_
 #define BINARYSEARCHTREE_HPP_
 
+#include<iostream>
 #include<utility>
 #include<vector>
 #include<algorithm>
@@ -92,12 +93,12 @@ namespace wush
 			BinarySearchTreeNode<Key>* _root;
 		public:
 			BinarySearchTree() : _root(NULL) { }
-			~BinarySearchTree()
+			virtual ~BinarySearchTree()
 			{
-//				for (Count i = _nodes.size();i > 0;i--)
-//				{
-//					delete _nodes[i - 1];
-//				}
+				while(_root)
+				{
+					TreeDelete(_root);
+				}
 			}
 
 			// Query Algorithm
@@ -177,6 +178,16 @@ namespace wush
 				TreeDelete(TreeSearch(key));
 			}
 
+			void TreeLeftRotate(const Key& key)
+			{
+				TreeLeftRotate(TreeSearch(key));
+			}
+
+			void TreeRightRotate(const Key& key)
+			{
+				TreeRightRotate(TreeSearch(key));
+			}
+
 			//show
 			typedef std::pair<BinarySearchTreeNode<Key>*, bool > BinarySearchTreeNodeRelation;
 			void Show()
@@ -208,6 +219,67 @@ namespace wush
 					std::cout << std::endl;
 				}
 			}
+
+		protected:
+			//rotation
+			void TreeLeftRotate(BinarySearchTreeNode<Key>* x)
+			{
+				if (!x) {
+					return;
+				}
+				if (!x->get_right()) {
+					return;
+				}
+				BinarySearchTreeNode<Key> *y(x->get_right());
+//				x->set_right(y->get_left());
+//				if (y->get_left()) {
+//					y->get_left()->set_parent(x);
+//				}
+//				y->set_parent(x->get_parent());
+//				if (x->get_parent()) {
+//					_root = y;
+//				}
+//				else {
+//					if (x == x->get_parent()->get_left()) {
+//						x->get_parent()->set_left(y);
+//					}
+//					else {
+//						x->get_parent()->set_right(y);
+//					}
+//				}
+//				y->set_left(x);
+//				x->set_parent(y);
+			}
+
+			void TreeRightRotate(BinarySearchTreeNode<Key>* x)
+			{
+				if (!x) {
+					return;
+				}
+				if (!x->get_left()) {
+					return;
+				}
+				BinarySearchTreeNode<Key> *y(x->get_left());
+				x->set_left(y->get_right());
+				if (y->get_right()) {
+					y->get_right()->set_parent(x);
+				}
+				y->set_parent(x->get_parent());
+				if (x->get_parent()) {
+					_root = y;
+				}
+				else {
+					if (x == x->get_parent()->get_right()) {
+						x->get_parent()->set_right(y);
+					}
+					else {
+						x->get_parent()->set_left(y);
+					}
+				}
+				y->set_right(x);
+				x->set_parent(y);
+			}
+
 
 		private:
 			BinarySearchTreeNode<Key>* TreeMaximum(BinarySearchTreeNode<Key>* x)
