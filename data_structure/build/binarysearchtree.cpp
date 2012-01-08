@@ -13,9 +13,16 @@ using namespace wush::data_structure;
 int main()
 {
 	BinarySearchTree<int> T;
+	T.TreeInsert(3);
+	T.TreeInsert(6);
+	T.TreeInsert(7);
 	T.TreeInsert(1);
 	T.TreeInsert(2);
-	std::cout << T.TreeMaximum()->get_key() << "," << T.TreeMinimum()->get_key() << std::endl;
+	T.TreeInsert(5);
+	T.TreeInsert(4);
+	std::cout << T.TreeSuccessor(3)->get_key() << std::endl;
+	T.TreeDelete(3);
+	T.Show();
 	return 0;
 }
 
